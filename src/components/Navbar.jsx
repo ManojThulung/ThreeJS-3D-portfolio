@@ -26,7 +26,7 @@ const Navbar = () => {
             3D Portfolio
           </p>
         </Link>
-        <ul className="list-none hidden sm:flex flex-row gap-10">
+        <ul className="list-none z-10 hidden sm:flex flex-row gap-10">
           {navLinks.map((link) => (
             <li
               key={link.id}
