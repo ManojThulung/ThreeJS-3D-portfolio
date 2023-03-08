@@ -1,12 +1,23 @@
 import { BrowserRouter } from "react-router-dom";
-import Hero from "./components/Hero";
-import Navbar from "./components/Navbar";
-import About from "./components/About";
-import Experience from "./components/Experience";
-import Works from "./components/Works";
-import Feedbacks from "./components/Feedbacks";
-import Contact from "./components/Contact";
-import Stars from "./components/canvas/Stars";
+// import Hero from "./components/Hero";
+// import Navbar from "./components/Navbar";
+// import Experience from "./components/Experience";
+// import Works from "./components/Works";
+// import Feedbacks from "./components/Feedbacks";
+// import Contact from "./components/Contact";
+import {
+  About,
+  Hero,
+  Navbar,
+  // Experience,
+  // Works,
+  // Feedbacks,
+  // Contact,
+  // StarsCanvas,
+} from "./components";
+// import { StarsCanvas } from "./components/canvas";
+
+// import { About } from "./components";
 
 function App() {
   return (
@@ -17,13 +28,13 @@ function App() {
           <Hero />
         </div>
         <About />
-        <Experience />
+        {/* <Experience />
         <Works />
         <Feedbacks />
         <div className="relative z-0">
           <Contact />
-          <Stars />
-        </div>
+          <StarsCanvas />
+        </div> */}
       </div>
     </BrowserRouter>
   );
