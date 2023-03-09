@@ -9,15 +9,12 @@ import {
   About,
   Hero,
   Navbar,
-  // Experience,
-  // Works,
-  // Feedbacks,
-  // Contact,
-  // StarsCanvas,
+  Experience,
+  Works,
+  Feedbacks,
+  Contact,
+  StarsCanvas,
 } from "./components";
-// import { StarsCanvas } from "./components/canvas";
-
-// import { About } from "./components";
 
 function App() {
   return (
@@ -28,13 +25,13 @@ function App() {
           <Hero />
         </div>
         <About />
-        {/* <Experience />
+        <Experience />
         <Works />
         <Feedbacks />
         <div className="relative z-0">
           <Contact />
           <StarsCanvas />
-        </div> */}
+        </div>
       </div>
     </BrowserRouter>
   );
