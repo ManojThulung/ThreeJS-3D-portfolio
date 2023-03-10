@@ -4,7 +4,7 @@ import { styles } from "../styles";
 import { SectionWrapper } from "../hoc";
 import emailjs from "@emailjs/browser";
 import { EarthCanvas } from "./canvas";
-import { slideIn, textVariant } from "../utils/motion";
+import { slideIn } from "../utils/motion";
 
 const Contact = () => {
   const formRef = useRef();
@@ -15,10 +15,41 @@ const Contact = () => {
     message: "",
   });
 
-  const handleChange = (e) => {};
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    setForm({ ...form, [name]: value });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    setLoading(true);
+
+    emailjs
+      .send(
+        import.meta.env.VITE_API_SERVICE_ID,
+        import.meta.env.VITE_API_TEMPLATE_ID,
+        {
+          from_name: form.name,
+          to_name: "Manoj Rai",
+          from_email: form.email,
+          to_email: "manojthulung03@gmail.com",
+          message: form.message,
+        },
+        "o_iepsqXVx3ydu9H_"
+      )
+      .then(
+        () => {
+          setLoading(false);
+          alert("Thank you. I will get back to you as soon as possible.");
+        },
+        (error) => {
+          setLoading(false);
+          console.log("error ", error);
+          alert("Something went wrong");
+        }
+      );
   };
 
   return (
@@ -30,7 +61,7 @@ const Contact = () => {
         <p className={styles.sectionSubText}>Get in touch</p>
         <h2 className={styles.sectionHeadText}>Contact.</h2>
 
-        <from
+        <form
           ref={formRef}
           onSubmit={handleSubmit}
           className="mt-12 flex flex-col gap-8"
@@ -47,7 +78,7 @@ const Contact = () => {
             />
           </label>
           <label className="flex flex-col">
-            <span className="text-white font-medium mb-4">Your Name</span>
+            <span className="text-white font-medium mb-4">Your Email</span>
             <input
               type="email"
               name="email"
@@ -58,7 +89,7 @@ const Contact = () => {
             />
           </label>
           <label className="flex flex-col">
-            <span className="text-white font-medium mb-4">Your Name</span>
+            <span className="text-white font-medium mb-4">Your Message</span>
             <textarea
               rows={5}
               type="text"
@@ -75,7 +106,7 @@ const Contact = () => {
           >
             {loading ? "Sending..." : "Send"}
           </button>
-        </from>
+        </form>
       </motion.div>
       <motion.div
         variants={slideIn("right", "tween", 0.2, 1)}
